@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>I LOVE FORMS</title>
+  </head>
+  <body>
+    <div class="container-fluid p-3 mb-2 bg-secondary text-white">
+      <h1 align="center"> Bienvenue!</h1>
+    </div>
+
+    <p align="center" class="text-warning"><strong><i>Tu peux nous donner quelques infos stp?</i></strong></p>
+
+     <div class="container">
+       <div class="row">
+
+
+      <article class="col-md-4 border border-secondary rounded">
+        <form action="/user" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <p>ton nom d'utilisateur: </p><input type="text" name="username"> <br /> <br />
+          <p>ton adresse email:</p> <input type="text" name="email" "> <br /> <br />
+          <p>une petite description pour ton profil:</p> <input type="text" name="bio"> <br /> <br />
+          <button type="submit" class="btn btn-dark ">Enregistrer</button>
+          <br /> <br />
+        </form>
+      </article>
+
+      <article class="col-md-4 border border-secondary rounded">
+        <%= form_tag('/user', method: "post") do %>
+          ton nom d'utilisateur:
+            <br /> <br />
+          <%= text_field_tag 'username', nil, placeholder: "ex: TheHackingBitch" %>
+            <br /> <br />
+          ton adresse email:
+            <br /> <br />
+          <%= email_field_tag 'email', nil, placeholder: "email@example.com" %>
+            <br /> <br />
+          une petite description:
+            <br /> <br />
+          <%= text_area_tag 'bio', nil, placeholder: "Une petite description ici" %>
+            <br /> <br />
+          <%= submit_tag 'Enregistrer', class:"btn btn-dark"%>
+            <br /> <br />
+        <% end %>
+      </article>
+      <!--
+      <article class="col-md-4 border border-secondary rounded">
+        <%= form_for @user, url:{action: "create"} do |f| %>
+          Username:
+          <%= f.text_field :username, placeholder: "ex: TheHackingBitch" %><br /> <br />
+          e-mail :
+          <%= f.email_field :email, placeholder: "email@example.com" %><br /> <br />
+          Bio :
+          <%= f.text_area :bio, placeholder: "Une petite description sympa" %><br /> <br />
+          <%= f.submit "Enregistrer"%>
+        <% end %>
+      </article>
+        -->
+      </div>
+    </div>
+  </body>
+</html>
